@@ -5,23 +5,21 @@ It is not a full specification but illustrates the core structure of an HTML doc
 ---
 ## Grammer
 ```ebnf
-Document		= "<!DOCTYPE html>" HtmlElement	;
-HtmlElement	= "<html>" HeadElement BodyElement "</html>"	;
-HeadElement	= "<head>" HeadContent "</head>"	;
-HeadContent	= (TitleElement | MetaElement | LinkElement)*	;
-TitleElement	= "<title>" Text "</title>"	;
-MetaElement		= "<meta" Attribute* ">"	;
-LinkElement		= "<link" Attribute* ">"	;
-
-BodyElement		= "<body>" Content* "</body>"	;
-Content 			= Element | Text	;
-Element 			= DivElement
-							| ParagraphElement
-							| HeadingElement
-							| ImageElement
-							| ListElement	;
-
-DivElement 		= "<div" Attribute* ">" Content* "</div>"	;
+Document		      = "<!DOCTYPE html>" HtmlElement	;
+HtmlElement	      = "<html>" HeadElement BodyElement "</html>"	;
+HeadElement	      = "<head>" HeadContent "</head>"	;
+HeadContent	      = (TitleElement | MetaElement | LinkElement)*	;
+TitleElement	    = "<title>" Text "</title>"	;
+MetaElement		    = "<meta" Attribute* ">"	;
+LinkElement		    = "<link" Attribute* ">"	;
+BodyElement		    = "<body>" Content* "</body>"	;
+Content 			    = Element | Text	;
+Element 			    = DivElement
+							    | ParagraphElement
+							    | HeadingElement
+							    | ImageElement
+							    | ListElement	;
+DivElement 		    = "<div" Attribute* ">" Content* "</div>"	;
 ParagraphElement	=	"<p>" Text "</p>"	;
 HeadingElement		= "<h1>" Text "</h1>"
 									|	"<h2>" Text "</h2>"
