@@ -5,39 +5,36 @@ It is not a full specification but illustrates the core structure of an HTML doc
 ---
 ## Grammer
 ```ebnf
-Document		      = "<!DOCTYPE html>" HtmlElement	;
-HtmlElement	      = "<html>" HeadElement BodyElement "</html>"	;
-HeadElement	      = "<head>" HeadContent "</head>"	;
-HeadContent	      = (TitleElement | MetaElement | LinkElement)*	;
-TitleElement	    = "<title>" Text "</title>"	;
-MetaElement		    = "<meta" Attribute* ">"	;
-LinkElement		    = "<link" Attribute* ">"	;
-BodyElement		    = "<body>" Content* "</body>"	;
-Content 			    = Element | Text	;
+Document		      = "<!DOCTYPE html>" HtmlElement
+HtmlElement	      = "<html>" HeadElement BodyElement "</html>"
+HeadElement	      = "<head>" HeadContent "</head>"
+HeadContent	      = (TitleElement | MetaElement | LinkElement)*
+TitleElement	    = "<title>" Text "</title>"
+MetaElement		    = "<meta" Attribute* ">"
+LinkElement		    = "<link" Attribute* ">"
+BodyElement		    = "<body>" Content* "</body>"
+Content 			    = Element | Text
 Element 			    = DivElement
 							    | ParagraphElement
 							    | HeadingElement
 							    | ImageElement
-							    | ListElement	;
-DivElement 		    = "<div" Attribute* ">" Content* "</div>"	;
-ParagraphElement	=	"<p>" Text "</p>"	;
+							    | ListElement
+DivElement 		    = "<div" Attribute* ">" Content* "</div>"
+ParagraphElement	=	"<p>" Text "</p>"
 HeadingElement		= "<h1>" Text "</h1>"
 									|	"<h2>" Text "</h2>"
-									| "<h3>" Text "</h3"	;
-
-ImageElement			= "<img" Attribute* "/>"	;
-
-ListElement				= UnorderedList | OrderedList	;
-UnorderedList			= "<ul>" ListItem+ "</ul>"	;
-OrderedList				= "<ol>" ListItem+ "</ol>"	;
-ListItem					= "<li>" Content*	"</li>"		;
-
-Attribute					= Name "=" "\"" Value "\""	;
-Name							= Letter {Letter | Digit | "-"}	;
-Value							= {Letter | Digit | " "	| "." | "/" | "-"}	;
-Text							= {Letter | Digit | " " | "!" | "?"	| "."	| ","	};	
-Letter						= "a" | ...	| "z" | "A" | ... | "Z"	;
-Digit							= "0" | ... | "9" ;
+									| "<h3>" Text "</h3"
+ImageElement			= "<img" Attribute* "/>"
+ListElement				= UnorderedList | OrderedList
+UnorderedList			= "<ul>" ListItem+ "</ul>"
+OrderedList				= "<ol>" ListItem+ "</ol>"
+ListItem					= "<li>" Content*	"</li>"
+Attribute					= Name "=" "\"" Value "\""
+Name							= Letter {Letter | Digit | "-"}
+Value							= {Letter | Digit | " "	| "." | "/" | "-"}
+Text							= {Letter | Digit | " " | "!" | "?"	| "."	| ","	}	
+Letter						= "a" | ...	| "z" | "A" | ... | "Z"
+Digit             = "0" | ... | "9"
 ```
 ## Notes
 - {...} -> zero or more repetitions
