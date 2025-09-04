@@ -3,7 +3,7 @@
 This document defines a simplified HTML grammar **Extended Backus-Norus Form (EBNF)**.
 It is not a full specification but illustrates the core structure of an HTML document.
 ---
-## Grammer
+## Grammar
 ```ebnf
 Document		      = "<!DOCTYPE html>" HtmlElement
 HtmlElement	      = "<html>" HeadElement BodyElement "</html>"
