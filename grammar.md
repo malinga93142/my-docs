@@ -50,6 +50,7 @@ For the following HTML:
 </div>
 ```
 We can expand it as:
+```html
 DivElement
  └── <div>
      Content
@@ -59,3 +60,4 @@ DivElement
           └── </p>
      └── </div>
 
+```
