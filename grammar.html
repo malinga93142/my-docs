@@ -1,0 +1,71 @@
+<h1 id="minimal-html-grammar-ebnf">Minimal HTML Grammar (EBNF)</h1>
+<p>This document defines a simplified HTML grammar <strong>Extended
+Backus-Norus Form (EBNF)</strong>. It is not a full specification but
+illustrates the core structure of an HTML document. — ## Grammer</p>
+<pre class="ebnf"><code>Document          = &quot;&lt;!DOCTYPE html&gt;&quot; HtmlElement ;
+HtmlElement       = &quot;&lt;html&gt;&quot; HeadElement BodyElement &quot;&lt;/html&gt;&quot;    ;
+HeadElement       = &quot;&lt;head&gt;&quot; HeadContent &quot;&lt;/head&gt;&quot;    ;
+HeadContent       = (TitleElement | MetaElement | LinkElement)*   ;
+TitleElement      = &quot;&lt;title&gt;&quot; Text &quot;&lt;/title&gt;&quot; ;
+MetaElement       = &quot;&lt;meta&quot; Attribute* &quot;&gt;&quot;    ;
+LinkElement       = &quot;&lt;link&quot; Attribute* &quot;&gt;&quot;    ;
+BodyElement       = &quot;&lt;body&gt;&quot; Content* &quot;&lt;/body&gt;&quot;   ;
+Content           = Element | Text    ;
+Element           = DivElement
+                  | ParagraphElement
+                  | HeadingElement
+                  | ImageElement
+                  | ListElement   ;
+DivElement        = &quot;&lt;div&quot; Attribute* &quot;&gt;&quot; Content* &quot;&lt;/div&gt;&quot;   ;
+ParagraphElement  = &quot;&lt;p&gt;&quot; Text &quot;&lt;/p&gt;&quot;   ;
+HeadingElement    = &quot;&lt;h1&gt;&quot; Text &quot;&lt;/h1&gt;&quot;
+                  | &quot;&lt;h2&gt;&quot; Text &quot;&lt;/h2&gt;&quot;
+                  | &quot;&lt;h3&gt;&quot; Text &quot;&lt;/h3&quot;    ;
+
+ImageElement      = &quot;&lt;img&quot; Attribute* &quot;/&gt;&quot;    ;
+ListElement       = UnorderedList | OrderedList   ;
+UnorderedList     = &quot;&lt;ul&gt;&quot; ListItem+ &quot;&lt;/ul&gt;&quot;  ;
+OrderedList       = &quot;&lt;ol&gt;&quot; ListItem+ &quot;&lt;/ol&gt;&quot;  ;
+ListItem          = &quot;&lt;li&gt;&quot; Content*   &quot;&lt;/li&gt;&quot;     ;
+Attribute         = Name &quot;=&quot; &quot;\&quot;&quot; Value &quot;\&quot;&quot;  ;
+Name              = Letter {Letter | Digit | &quot;-&quot;} ;
+Value             = {Letter | Digit | &quot; &quot; | &quot;.&quot; | &quot;/&quot; | &quot;-&quot;}  ;
+Text              = {Letter | Digit | &quot; &quot; | &quot;!&quot; | &quot;?&quot; | &quot;.&quot;   | &quot;,&quot;   };  
+Letter            = &quot;a&quot; | ... | &quot;z&quot; | &quot;A&quot; | ... | &quot;Z&quot; ;
+Digit             = &quot;0&quot; | ... | &quot;9&quot; ;</code></pre>
+<h2 id="notes">Notes</h2>
+<ul style="list-style: none; padding:0">
+  <li style="display: grid; grid-template-columns: 70px auto">
+    <code>{…}</code>&rarr; zero or more repetitions
+  </li>
+  <li style="display: grid; grid-template-columns: 70px auto">
+    <code>{… | …}</code> &rarr; alternatives
+  </li>
+
+  <li style="display: grid; grid-template-columns: 70px auto">
+    <code>[…]</code> &rarr; optional (not used here)
+  </li>
+  <li style="display: grid; grid-template-columns: 70px auto">
+    <code>(ε)</code> &rarr; empty (nothing)
+  </li>
+</ul>
+<h2 id="example-parse">Example Parse</h2>
+<p>For the following HTML:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">div</span><span class="dt">&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span> Hello, World! <span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">div</span><span class="dt">&gt;</span></span></code></pre></div>
+<h4><strong>We can expand it as</strong></h4>
+ <pre>
+ DivElement
+  └── &lt;div&gt;
+      Content
+        └── ParagraphElement
+            └── &lt;p&gt;
+                Text -> "Hello, World!"
+            └── &lt;/p&gt;
+        └── &lt;/div&gt;
+</pre>
+
+<hr>
+<p><small><em>Document prepared by Malinga RK</em></small></p>
