@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Linked List in C </title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      border: 1px solid #ccc;
+      overflow-x:auto;
+    }
+    code{
+      font-family: "Courier New", Courier, monospace;
+    }
+    footer{
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: gray;
+    }
+    a{
+      text-decoration: none;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+  <h1>Linked List in C</h1>
+  <p>A linked list is a linear data structure where each element is a separate object called a <strong>node</strong>. Each node contains data and a reference (pointer) to the next node in the sequence.</p>
+  <h2>Example: Singly Linked List in C</h2>
+  <pre><code>
+  #include &lt;stdio.h&gt;
+  #include &lt;stdlib&gt;
+  struct Node {
+    int data;
+    struct Node* next;
+  };
+
+  void print_list(struct Node* n){
+    while( n != NULL ){
+      printf("%d ", n-&gt;data);
+      n = n-&gt;next;
+    }
+    printf("\n");
+  }
+  int main(){
+    struct Node *head   = NULL;
+    struct Node *second = NULL;
+    struct Node *third  = NULL;
+    // Allocate 3 nodes in the heap
+    head = (struct Node*)malloc(sizeof(struct Node));
+    second=(struct Node*)malloc(sizeof(struct Node));
+    third =(struct Node*)malloc(sizeof(struct Node));
+    head-&gt;data = 1;
+    head-&gt;next = second;
+
+    second-&gt;data = 2;
+    second-&gt;next = third;
+
+    third-&gt;data = 3;
+    third-&gt;next = NULL;
+
+    print_list(head);
+    return 0;
+  }
+  </code></pre>
+
+  <footer>Prepared by Malinga RK</footer>
+</body>
+</html>
